@@ -1,8 +1,10 @@
 /*
-An Arduino sketch to emulate IR Daikin ARC433** remoce control unit
+An Arduino sketch to emulate IR Daikin ARC433** remote control unit
 Read more on http://harizanov.com/2012/02/control-daikin-air-conditioner-over-the-internet/
-This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License.
+Daikin Remote Control Over the Internet by https://github.com/mharizanov/Daikin-AC-remote-control-over-the-Internet is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
+
 Martin Harizanov 2012
+mharizanov  gmail  com
 */
 
 #include <EtherCard.h>
