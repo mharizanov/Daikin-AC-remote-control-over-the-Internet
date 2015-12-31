@@ -36,46 +36,48 @@ unsigned char daikin[COMMAND_LENGTH]     = {
 //8    9   10   11   12    13   14   15
 0xB0,0x00,0x00,0x00,0x00,0x00,0x00,0xC0,0x00,0x00,0xE3 };
 //16  17    18  19   20    21   22  23   24   25   26
+
 /*
-
-
-byte 13=mode
-b7 = 0
-b6+b5+b4 = Mode
-b3 = 0
-b2 = OFF timer set
-b1 = ON timer set
-b0 = Air Conditioner ON
-
-Modes: b6+b5+b4
-011 = Cool
-100 = Heat (temp 23)
-110 = FAN (temp not shown, but 25)
-000 = Fully Automatic (temp 25)
-010 = DRY (temp 0xc0 = 96 degrees c)
-
-byte 14=temp*2
-
-byte 16=Fan
-FAN control
-b7+b6+b5+b4 = Fan speed
-b3+b2+b1+b0 = Swing control up/down
-
-Fan: b7+b6+b5+b4
-0×30 = 1 bar
-0×40 = 2 bar
-0×50 = 3 bar
-0×60 = 4 bar
-0×70 = 5 bar
-0xa0 = Auto
-0xb0 = Not auto, moon + tree
-Swing control up/down:
-0000 = Swing up/down off
-1111 = Swing up/down on
-Swing control left/right:
-0000 = Swing left/right off
-1111 = Swing left/right on
+	Daikin AC map 
+	byte 7= checksum of the first part (and last byte before a 29ms pause)
+	byte 13=mode
+		b7 = 0
+		b6+b5+b4 = Mode
+			Modes: b6+b5+b4
+			011 = Cool
+			100 = Heat (temp 23)
+			110 = FAN (temp not shown, but 25)
+			000 = Fully Automatic (temp 25)
+			010 = DRY (temp 0xc0 = 96 degrees c)
+		b3 = 0
+		b2 = OFF timer set
+		b1 = ON timer set
+		b0 = Air Conditioner ON
+	byte 14=temp*2   (Temp should be between 18 - 32)
+	byte 16=Fan
+		FAN control
+		b7+b6+b5+b4 = Fan speed
+			Fan: b7+b6+b5+b4
+			0×30 = 1 bar
+			0×40 = 2 bar
+			0×50 = 3 bar
+			0×60 = 4 bar
+			0×70 = 5 bar
+			0xa0 = Auto
+			0xb0 = Not auto, moon + tree
+		b3+b2+b1+b0 = Swing control up/down
+			Swing control up/down:
+			0000 = Swing up/down off
+			1111 = Swing up/down on
+	byte 17
+			Swing control left/right:
+			0000 = Swing left/right off
+			1111 = Swing left/right on
+	byte 21=Aux  -> Powerful (bit 1), Silent (bit 5)
+	byte 24=Aux2 -> Intelligent eye on (bit 7)
+	byte 26= checksum of the second part 
 */
+
 
 IRsend irsend;
 
